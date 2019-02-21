@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+  x:Class="Colloseum.HomePage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+  xmlns:colloseum="clr-namespace:Colloseum"
+  android:TabbedPage.ToolbarPlacement="Bottom">
+  <!--  Pages can be added as references or inline  -->
+  <colloseum:NowPlayingMoviesPage Title="Now Playing" Icon="nowplaying_movies.png" />
+  <colloseum:UpcomingMoviesPage Title="Upcoming Movies" Icon="upcoming_movies.png" />
+  <colloseum:LatestMoviesPage Title="Latest Movies" Icon="latest_movies.png" />
+</TabbedPage>

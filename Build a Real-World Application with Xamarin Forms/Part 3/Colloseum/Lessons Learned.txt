@@ -1,0 +1,33 @@
+When getting the following error when running the app on an iOS simulator/device:
+
+"System.Net.WebException: The resource could not be loaded because the App Transport Security policy requires the use of a secure connection."
+
+Do the following steps:
+
+1. Open the Project target's info.plist file
+
+2. Add a Key called NSAppTransportSecurity as a Dictionary.
+
+3. Add a Subkey called NSAllowsArbitraryLoads as Boolean and set its value to YES.
+
+Clean the Project and Now Everything should be Running fine.
+
+Ref Link: https://stackoverflow.com/a/32609970
+
+EDIT: OR In source code of info.plist file we can add that:
+
+<key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>yourdomain.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                <false/>
+            </dict>
+       </dict>
+  </dict>

@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  x:Class="Colloseum.NowPlayingDetailsPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:vm="clr-namespace:Colloseum.ViewModels">
+  <!--<ContentPage.BindingContext>
+    <vm:NowPlayingDetailsPageViewModel />
+  </ContentPage.BindingContext>-->
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="0.4*" />
+        <RowDefinition Height="0.2*" />
+        <RowDefinition Height="0.2*" />
+        <RowDefinition Height="0.1*" />
+        <RowDefinition Height="0.1*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Image
+        Grid.Row="0"
+        Grid.RowSpan="4"
+        Aspect="Fill"
+        Source="{Binding ImageMovieCover}" />
+      <BoxView
+        Grid.Row="0"
+        Grid.RowSpan="4"
+        BackgroundColor="Black"
+        Opacity="0.6" />
+      <Label
+        Grid.Row="1"
+        Margin="15,0,0,0"
+        FontSize="24"
+        Text="{Binding MovieName}"
+        TextColor="White" />
+      <StackLayout
+        Grid.Row="2"
+        Margin="5,0,0,0"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Image
+            Grid.Column="0"
+            Aspect="AspectFit"
+            Source="ellipse.png" />
+          <Label
+            Grid.Column="0"
+            HorizontalOptions="Center"
+            Text="PG-3"
+            TextColor="White"
+            VerticalOptions="Center" />
+          <Label
+            Grid.Column="1"
+            BackgroundColor="White"
+            Text="122 min"
+            TextColor="White" />
+          <Label
+            Grid.Column="2"
+            BackgroundColor="White"
+            Text="English"
+            TextColor="White" />
+        </Grid>
+      </StackLayout>
+      <Image
+        Grid.Row="3"
+        Grid.RowSpan="2"
+        Margin="0,0,20,0"
+        HorizontalOptions="End"
+        Source="play_icon.png" />
+      <StackLayout
+        Grid.Row="5"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Label Margin="5,0,5,0">
+          <Label.FormattedText>
+            <FormattedString>
+              <Span
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Genre"
+                TextColor="Black" />
+              <Span
+                FontSize="16"
+                Text="Action, Adventure"
+                TextColor="Black" />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+        <Label Margin="5,0,5,0">
+          <Label.FormattedText>
+            <FormattedString>
+              <Span
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Playing Date"
+                TextColor="Black" />
+              <Span
+                FontSize="16"
+                Text="06/06/2019"
+                TextColor="Black" />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+        <Label Margin="5,0,5,0">
+          <Label.FormattedText>
+            <FormattedString>
+              <Span
+                FontAttributes="Bold"
+                FontSize="16"
+                Text="Starring"
+                TextColor="Black" />
+              <Span
+                FontSize="16"
+                Text="Helen Hunt, Jack Nicholson"
+                TextColor="Black" />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+        <ScrollView>
+          <Label Margin="5,0,5,0">
+            <Label.FormattedText>
+              <FormattedString>
+                <Span
+                  FontAttributes="Bold"
+                  FontSize="16"
+                  Text="Description"
+                  TextColor="Black" />
+                <Span
+                  FontSize="16"
+                  Text="This is a very good movie. Go and see it!!"
+                  TextColor="Black" />
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+        </ScrollView>
+        <Button
+          BackgroundColor="#ff5722"
+          FontSize="24"
+          HorizontalOptions="FillAndExpand"
+          Text="Book Ticket"
+          TextColor="White"
+          VerticalOptions="FillAndExpand" />
+      </StackLayout>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

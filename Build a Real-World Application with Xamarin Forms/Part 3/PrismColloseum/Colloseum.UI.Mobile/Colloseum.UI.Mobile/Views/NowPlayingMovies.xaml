@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Colloseum.UI.Mobile.Views.NowPlayingMovies"
+             xmlns:vm="clr-namespace:ColloseumUI.Mobile.ViewModels">
+  <ContentPage.Content>
+    <ListView
+      x:Name="lstNowPlayingMovies"
+      HasUnevenRows="True"
+      ItemsSource="{Binding NowPlayingMovies}"
+      SelectedItem="{Binding SelectedMovie}"
+      SeparatorVisibility="None">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Frame
+              Margin="5"
+              Padding="0"
+              BorderColor="LightGray"
+              HasShadow="False">
+              <Grid Margin="15,5,10,5">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="100" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Frame
+                  Grid.Column="0"
+                  Padding="0"
+                  CornerRadius="20">
+                  <Image Aspect="AspectFill" Source="{Binding CoverImage}" />
+                </Frame>
+                <StackLayout Grid.Column="1" Margin="10,0,0,0">
+                  <Label
+                    FontSize="20"
+                    Text="{Binding MovieName}"
+                    TextColor="Black" />
+                  <StackLayout Orientation="Horizontal">
+                    <Label
+                      FontSize="16"
+                      Text="Director"
+                      TextColor="#757575" />
+                    <Label
+                      FontSize="16"
+                      Text="{Binding Director}"
+                      TextColor="Black" />
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal">
+                    <Label
+                      FontSize="16"
+                      Text="Duration"
+                      TextColor="#757575" />
+                    <Label
+                      FontSize="16"
+                      Text="{Binding Duration}"
+                      TextColor="Black" />
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal">
+                    <Label
+                      FontSize="16"
+                      Text="Language"
+                      TextColor="#757575" />
+                    <Label
+                      FontSize="16"
+                      Text="{Binding Language}"
+                      TextColor="Black" />
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal">
+                    <Label
+                      FontAttributes="Bold"
+                      FontSize="18"
+                      Text="{Binding Rating}"
+                      TextColor="Black" />
+                    <Image
+                      HeightRequest="20"
+                      Source="star_icon.png"
+                      WidthRequest="20" />
+                  </StackLayout>
+                </StackLayout>
+              </Grid>
+            </Frame>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </ContentPage.Content>
+</ContentPage>

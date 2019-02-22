@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            x:Class="Colloseum.UI.Mobile.Views.MainPage"
+            xmlns:colloseum="clr-namespace:Colloseum.UI.Mobile.Views"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom">
+  <colloseum:NowPlayingMovies Title="Now Playing" Icon="nowplaying_movies.png" />
+  <colloseum:UpcomingMovies Title="Upcoming Movies" Icon="upcoming_movies.png" />
+  <colloseum:LatestMovies Title="Latest Movies" Icon="latest_movies.png" />
+</TabbedPage>

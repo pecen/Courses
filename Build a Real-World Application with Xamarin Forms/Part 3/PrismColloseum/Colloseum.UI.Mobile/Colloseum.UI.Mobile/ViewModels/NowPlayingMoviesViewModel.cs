@@ -16,6 +16,7 @@ namespace Colloseum.UI.Mobile.ViewModels
     public ObservableCollection<NowPlayingMovie> NowPlayingMovies { get; set; }
 
     public NowPlayingMoviesViewModel(INavigationService navigationService) : base(navigationService) {
+      Initialize();
     }
 
     private async void Initialize() {

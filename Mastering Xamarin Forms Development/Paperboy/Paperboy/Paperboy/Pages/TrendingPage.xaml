@@ -20,21 +20,47 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
               <RowDefinition />
+              <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <controls:CircleImage
+            <!--<controls:CircleImage
               Grid.RowSpan="2"
               Aspect="AspectFit"
               HeightRequest="100"
               Source="{Binding ImageUrl}"
-              WidthRequest="100" />
+              WidthRequest="100" />-->
+            <Image
+              Grid.RowSpan="3"
+              Aspect="AspectFill"
+              HeightRequest="80"
+              Source="{Binding ImageUrl}"
+              WidthRequest="80" />
 
             <Label
               Grid.Row="0"
               Grid.Column="1"
-              FontSize="Medium"
+              Style="{DynamicResource ListTitleStyle}"
               Text="{Binding Title}" />
-            <StackLayout
+            <Label
+              Grid.Row="1"
+              Grid.Column="1"
+              Style="{DynamicResource ListDescriptionStyle}"
+              Text="TOPIC:" />
+            <Label
+              Grid.Row="2"
+              Grid.Column="1"
+              Style="{DynamicResource ListDescriptionStyle}"
+              Text="{Binding Description}" />
+
+            <Label
+              Grid.Row="3"
+              Grid.Column="1"
+              Margin="0,5"
+              FontSize="Micro"
+              Text="{Binding CreatedDate, StringFormat='UPDATED: {0:dddd h:mm tt} UTC'}"
+              VerticalOptions="Start" />
+            <!--<StackLayout
               Grid.Row="1"
               Grid.Column="1"
               VerticalOptions="Start">
@@ -47,7 +73,7 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Text="{Binding CreatedDate}" />
-            </StackLayout>
+            </StackLayout>-->
           </Grid>
         </ViewCell>
       </DataTemplate>

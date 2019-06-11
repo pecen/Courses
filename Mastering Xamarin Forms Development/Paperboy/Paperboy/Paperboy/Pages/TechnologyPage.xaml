@@ -1,12 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Paperboy.Pages.TechnologyPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+<ContentPage
+  x:Class="Paperboy.Pages.TechnologyPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <ListView
+    x:Name="newsListView"
+    Margin="10"
+    HasUnevenRows="True"
+    ItemsSource="{Binding}"
+    SeparatorVisibility="None">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+              Grid.RowSpan="2"
+              Aspect="Fill"
+              HeightRequest="80"
+              Source="{Binding ImageUrl}"
+              VerticalOptions="Start"
+              WidthRequest="80" />
+
+            <Label
+              Grid.Row="0"
+              Grid.Column="1"
+              Style="{DynamicResource ListTitleStyle}"
+              Text="{Binding Title}" />
+            <Label
+              Grid.Row="1"
+              Grid.Column="1"
+              Style="{DynamicResource ListDescriptionStyle}"
+              Text="{Binding Description}" />
+
+            <Label
+              Grid.Row="2"
+              Grid.Column="1"
+              Margin="0,5"
+              FontSize="Micro"
+              Text="{Binding CreatedDate, StringFormat='UPDATED: {0:dddd h:mm tt} GMT'}"
+              VerticalOptions="Start" />
+
+
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
 </ContentPage>

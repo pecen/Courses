@@ -7,19 +7,18 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
-namespace Paperboy.Droid
-{
-    [Activity(Label = "Paperboy", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
-    {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+namespace Paperboy.Droid {
+  // Changed the MainLauncher setting below to false bcos we don't want this activity
+  // to be the start activity, i.e. we are using a splash screen. 
+  [Activity(Label = "Paperboy", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+  public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity {
+    protected override void OnCreate(Bundle savedInstanceState) {
+      TabLayoutResource = Resource.Layout.Tabbar;
+      ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
-        }
+      base.OnCreate(savedInstanceState);
+      global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+      LoadApplication(new App());
     }
+  }
 }

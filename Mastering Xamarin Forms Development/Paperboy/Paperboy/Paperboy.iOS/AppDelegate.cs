@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+
+// If Prism is to be used
+//using Prism;
+//using Prism.Ioc;
+
 using UIKit;
 
 namespace Paperboy.iOS {
@@ -35,11 +40,22 @@ namespace Paperboy.iOS {
 
       LoadApplication(new App());
 
-      var x = typeof(Xamarin.Forms.Themes.DarkThemeResources);
-      x = typeof(Xamarin.Forms.Themes.LightThemeResources);
-      x = typeof(Xamarin.Forms.Themes.iOS.UnderlineEffect);
+      // If Prism is to be used
+      //LoadApplication(new App(new iOSInitializer()));
+
+      // This is something unnecessary, and only for test
+      //var x = typeof(Xamarin.Forms.Themes.DarkThemeResources);
+      //x = typeof(Xamarin.Forms.Themes.LightThemeResources);
+      //x = typeof(Xamarin.Forms.Themes.iOS.UnderlineEffect);
 
       return base.FinishedLaunching(app, options);
     }
   }
+
+  // If Prism is to be used
+  //public class iOSInitializer : IPlatformInitializer {
+  //  public void RegisterTypes(IContainerRegistry containerRegistry) {
+  //    // Register any platform specific implementations
+  //  }
+  //}
 }

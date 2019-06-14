@@ -1,0 +1,146 @@
+When converting a Xamarin Forms App to a Prism Xamarin Forms App you should do the following:
+
+1. Open App.xaml.cs in the main/common project
+
+2. Change
+  
+  public partial class App : Application {
+
+  to
+
+  public partial class App {
+
+3. Add the following comment (optional) for clarity:
+
+    /* 
+     * The Xamarin Forms XAML Previewer in Visual Studio uses System.Activator.CreateInstance.
+     * This imposes a limitation in which the App class must have a default constructor. 
+     * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
+     */
+
+4. Comment out or remove the existing Constructor and add the following constructors:
+
+    public App() : this(null) { }
+
+    public App(IPlatformInitializer initializer) : base(initializer) { }
+
+5. Add 
+
+	using Prism;
+	using Prism.Ioc;
+
+6. Add the following method:
+
+    protected override async void OnInitialized() {
+      InitializeComponent();
+
+      await NavigationService.NavigateAsync("NavigationPage/MainPage");
+    }
+
+	where the last line is added if you will use the NavigationPage concept. If not you just refer to the 
+	starting page instead, i.e.:
+
+	      await NavigationService.NavigateAsync("MainPage");
+
+7. Add the following method:
+
+    protected override void RegisterTypes(IContainerRegistry containerRegistry) {
+      containerRegistry.RegisterForNavigation<NavigationPage>();
+      containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+    }
+
+	If the NavigationPage concept is not to be used, then just add:
+
+      containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+
+8. Add every other page you should be able to navigate to in the RegisterTypes method
+
+9. Create the folders Views and ViewModels
+
+10. Add all your views to the Views folder and all your viewmodels to the ViewModels folder
+
+11. Open the file MainActivity.cs in the Android project
+
+12. Comment out or remove the line
+
+      LoadApplication(new App());
+
+	and add the following
+
+      LoadApplication(new App(new AndroidInitializer()));
+
+13. Add the following class in the same file as MainActivity.cs but below (outside) the MainActivity class and in the same namespace
+
+  public class AndroidInitializer : IPlatformInitializer {
+    public void RegisterTypes(IContainerRegistry containerRegistry) {
+      // Register any platform specific implementations
+    }
+  }
+
+14. Add the following usings
+
+	using Prism;
+	using Prism.Ioc;
+
+15. Open the file AppDelegate in the iOS project
+
+16. Comment out or remove the line
+
+      LoadApplication(new App());
+
+	and add the following
+
+      LoadApplication(new App(new iOSInitializer()));
+
+17. Add the following class in the same file as AppDelegate.cs but below (outside) the AppDelegate class and in the same namespace
+
+  public class iOSInitializer : IPlatformInitializer {
+    public void RegisterTypes(IContainerRegistry containerRegistry) {
+      // Register any platform specific implementations
+    }
+  }
+
+18. Add the following usings
+
+	using Prism;
+	using Prism.Ioc;
+
+19. Open the file MainPage.xaml.cs in the UWP project
+
+20. Comment out or remove the line
+
+      LoadApplication(new App());
+
+	and add the following
+
+      LoadApplication(new App(new UwpInitializer()));
+
+21. Add the following class in the same file as MainPage.xml.cs but below (outside) the MainPage class and in the same namespace
+
+  public class UwpInitializer : IPlatformInitializer {
+    public void RegisterTypes(IContainerRegistry containerRegistry) {
+      // Register any platform specific implementations
+    }
+  }
+
+22. Add the following usings
+
+	using Prism;
+	using Prism.Ioc;
+
+23. Open the other partial App class, i.e. right click on the App class in App.xaml.cs in the common project and choose Go To Definition.
+	You will then get all the partial classes in the bottom in VS. You should open the auto-generated one which should look something like
+
+	public partial class App : global::Xamarin.Forms.Application {
+
+	and with a filename like App.xaml.g.cs
+
+24. Change the following row
+
+    public partial class App : global::Xamarin.Forms.Application {
+
+	to
+
+    public partial class App : global::Prism.Unity.PrismApplication {
+
+25. Compile and run. 

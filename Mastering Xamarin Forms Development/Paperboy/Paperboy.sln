@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paperboy.UWP", "Paperboy\Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Paperboy", "Paperboy\Paperboy\Paperboy.csproj", "{DCFEE5A7-B143-4BA7-B417-5D3620AF77F8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E248156B-989A-4F0D-B35C-5F95DECE9ECA}"
+	ProjectSection(SolutionItems) = preProject
+		LessonsLearned.txt = LessonsLearned.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

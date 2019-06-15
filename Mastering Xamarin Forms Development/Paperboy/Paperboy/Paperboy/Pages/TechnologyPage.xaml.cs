@@ -18,19 +18,20 @@ namespace Paperboy.Pages
 		}
 
     protected override void OnAppearing() {
-      LoadNewsAsync();
+      //LoadNewsAsync();
+      BindingContext = App.ViewModel;
 
       base.OnAppearing();
     }
 
-    private async void LoadNewsAsync() {
-      newsListView.IsRefreshing = true;
+    //private async void LoadNewsAsync() {
+    //  newsListView.IsRefreshing = true;
 
-      var news = await Helpers.NewsHelper.GetByCategoryAsync(News.NewsCategoryType.ScienceAndTechnology);
+    //  var news = await Helpers.NewsHelper.GetByCategoryAsync(News.NewsCategoryType.ScienceAndTechnology);
 
-      this.BindingContext = news;
+    //  this.BindingContext = news;
 
-      newsListView.IsRefreshing = false;
-    }
+    //  newsListView.IsRefreshing = false;
+    //}
   }
 }

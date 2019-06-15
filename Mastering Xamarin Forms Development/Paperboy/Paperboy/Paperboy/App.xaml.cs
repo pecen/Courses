@@ -1,4 +1,5 @@
-﻿using Prism;
+﻿using Paperboy.ViewModels;
+using Prism;
 using Prism.Ioc;
 using Prism.Unity;
 using System;
@@ -11,6 +12,7 @@ namespace Paperboy {
   //public partial class App {
 
   public partial class App : Application {
+    public static MainPageViewModel ViewModel { get; set; }
 
     public App() {
       InitializeComponent();

@@ -16,24 +16,24 @@ namespace Paperboy.Helpers {
     public static async Task<List<NewsInformation>> GetByCategoryAsync(NewsCategoryType category) {
       List<NewsInformation> results = new List<NewsInformation>();
 
-      string searchUrl = $"https://api.cognitive.microsoft.com/bing/v5.0/news/?Category={category}";
+      //string searchUrl = $"https://api.cognitive.microsoft.com/bing/v5.0/news/?Category={category}";
 
-      var client = new HttpClient();
-      client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Common.CoreConstants.BingNewsSearchApiKey);
+      //var client = new HttpClient();
+      //client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Common.CoreConstants.BingNewsSearchApiKey);
 
-      var uri = new Uri(searchUrl);
-      var result = await client.GetStringAsync(uri);
-      var newsResult = JsonConvert.DeserializeObject<NewsResult>(result);
+      //var uri = new Uri(searchUrl);
+      //var result = await client.GetStringAsync(uri);
+      //var newsResult = JsonConvert.DeserializeObject<NewsResult>(result);
 
-      results = (from item in newsResult.value
-                 select new NewsInformation() {
-                   Title = item.name,
-                   Description = item.description,
-                   //CreatedDate = item.datePublished,
-                   CreatedDate = item.datePublished.ToString(CultureInfo.InstalledUICulture),
-                   ImageUrl = item.image?.thumbnail?.contentUrl,
+      //results = (from item in newsResult.value
+      //           select new NewsInformation() {
+      //             Title = item.name,
+      //             Description = item.description,
+      //             //CreatedDate = item.datePublished,
+      //             CreatedDate = item.datePublished.ToString(CultureInfo.InstalledUICulture),
+      //             ImageUrl = item.image?.thumbnail?.contentUrl,
 
-                 }).ToList();
+      //           }).ToList();
 
       return results.Where(w => !string.IsNullOrEmpty(w.ImageUrl)).Take(10).ToList();
     }

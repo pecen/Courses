@@ -2,14 +2,14 @@
 <ContentPage
   x:Class="Paperboy.Pages.TrendingPage"
   xmlns="http://xamarin.com/schemas/2014/forms"
-  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
 
   <ListView
-    x:Name="newsListView"
     Margin="20"
     HasUnevenRows="True"
-    ItemsSource="{Binding}">
+    IsRefreshing="{Binding IsBusy}"
+    ItemsSource="{Binding TrendingNews}">
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
@@ -21,7 +21,7 @@
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto" />
               <RowDefinition Height="Auto" />
-              <RowDefinition />
+              <!--<RowDefinition />-->
               <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <!--<controls:CircleImage
@@ -32,7 +32,7 @@
               WidthRequest="100" />-->
             <Image
               Grid.RowSpan="3"
-              Aspect="AspectFill"
+              Aspect="AspectFit"
               HeightRequest="80"
               Source="{Binding ImageUrl}"
               WidthRequest="80" />
@@ -47,7 +47,7 @@
               Grid.Column="1"
               Style="{DynamicResource ListDescriptionStyle}"
               Text="TOPIC:" />
-            <Label
+            <!--<Label
               Grid.Row="2"
               Grid.Column="1"
               Style="{DynamicResource ListDescriptionStyle}"
@@ -59,21 +59,20 @@
               Margin="0,5"
               FontSize="Micro"
               Text="{Binding CreatedDate, StringFormat='UPDATED: {0:dddd h:mm tt} UTC'}"
-              VerticalOptions="Start" />
-            <!--<StackLayout
-              Grid.Row="1"
+              VerticalOptions="Start" />-->
+            <StackLayout
+              Grid.Row="2"
               Grid.Column="1"
               VerticalOptions="Start">
               <Label
-                Grid.Row="1"
-                Grid.Column="1"
                 Text="{Binding Description}"
                 VerticalTextAlignment="Start" />
               <Label
-                Grid.Row="1"
-                Grid.Column="1"
-                Text="{Binding CreatedDate}" />
-            </StackLayout>-->
+                Margin="0,5"
+                FontSize="Micro"
+                Text="{Binding CreatedDate, StringFormat='UPDATED: {0:dddd h:mm tt} UTC'}"
+                VerticalOptions="Start" />
+            </StackLayout>
           </Grid>
         </ViewCell>
       </DataTemplate>

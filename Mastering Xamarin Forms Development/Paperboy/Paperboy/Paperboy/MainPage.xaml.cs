@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Paperboy.Pages;
+using Paperboy.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,12 @@ namespace Paperboy {
     }
 
     protected override void OnAppearing() {
-      Plugin.Connectivity.CrossConnectivity.Current.ConnectivityChanged += Current_ConnectivityChanged;
+      //Plugin.Connectivity.CrossConnectivity.Current.ConnectivityChanged += Current_ConnectivityChanged;
+      if (App.ViewModel == null) {
+        App.ViewModel = new MainPageViewModel();
+        App.ViewModel.RefreshNewsAsync();
+      }
+
       base.OnAppearing();
     }
 
@@ -21,7 +28,7 @@ namespace Paperboy {
     }
 
     private async void OnSettingsClicked(object sender, EventArgs e) {
-      await Navigation.PushAsync(new Pages.SettingsPage());
+      await Navigation.PushAsync(new SettingsPage());
     }
   }
 }

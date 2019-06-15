@@ -15,7 +15,7 @@
         Maximum="20"
         Minimum="0" />
       <Label Style="{x:DynamicResource SubtitleStyle}" Text="Enter your display name:" />
-      <Entry x:Name="displayNameEntry" Placeholder="" />
+      <Entry Text="{Binding DisplayName}" />
 
       <!--<controls:CircleImage
         Aspect="AspectFit"
@@ -26,12 +26,12 @@
       <Image
         Aspect="AspectFit"
         HeightRequest="100"
-        Source="https://wintellectnow.blob.core.windows.net/public/Scott_Peterson.jpg" />
+        Source="{Binding ProfileImageUrl}" />
 
       <Label Style="{x:DynamicResource SubtitleStyle}" Text="My bio:" />
-      <Editor x:Name="bioEditor" HeightRequest="160" />
+      <Editor HeightRequest="160" Text="{Binding BioContent}" />
       <Label Style="{x:DynamicResource SubtitleStyle}" Text="Select a default news category:" />
-      <Picker x:Name="categoryPicker">
+      <Picker x:Name="categoryPicker" TextColor="{DynamicResource ListTextColor}">
         <Picker.Items>
           <x:String>Business</x:String>
           <x:String>Science and Technology</x:String>
@@ -42,7 +42,7 @@
           <x:String>World</x:String>
         </Picker.Items>
       </Picker>
-      <Button Text="Save" />
+      <Button Text="Save" Clicked="Button_Clicked" />
 
     </StackLayout>
   </ScrollView>

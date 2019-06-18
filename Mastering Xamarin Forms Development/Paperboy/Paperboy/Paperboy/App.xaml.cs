@@ -1,8 +1,4 @@
 ﻿using Paperboy.ViewModels;
-using Prism;
-using Prism.Ioc;
-using Prism.Unity;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,6 +9,7 @@ namespace Paperboy {
 
   public partial class App : Application {
     public static MainPageViewModel ViewModel { get; set; }
+    public static INavigation MainNavigation { get; set; }
 
     public App() {
       InitializeComponent();

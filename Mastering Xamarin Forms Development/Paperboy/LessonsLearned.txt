@@ -49,9 +49,9 @@ When converting a Xamarin Forms App to a Prism Xamarin Forms App you should do t
       containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
     }
 
-	If the NavigationPage concept is not to be used, then just add:
+   If the NavigationPage concept is not to be used, then just add:
 
-      containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+    containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
 
 8. Add every other page you should be able to navigate to in the RegisterTypes method
 

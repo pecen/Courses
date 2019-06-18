@@ -7,12 +7,16 @@
   xmlns:pages="clr-namespace:Paperboy.Pages">
 
   <TabbedPage.ToolbarItems>
-    <ToolbarItem Text="Settings" Icon="icon_settings.png" Order="Primary" Clicked="OnSettingsClicked"/>
+    <ToolbarItem
+      Command="{StaticResource NavigateToSettingsCommand}"
+      Icon="icon_settings.png"
+      Order="Primary"
+      Text="Settings" />
   </TabbedPage.ToolbarItems>
 
   <TabbedPage.Children>
-    <pages:TrendingPage Icon="icon_trending.png" Title="Trending"/>
-    <pages:WorldPage Icon="icon_world.png" Title="World"/>
-    <pages:TechnologyPage Icon="icon_technology.png" Title="Technology"/>
+    <pages:TrendingPage Title="Trending" Icon="icon_trending.png" />
+    <pages:WorldPage Title="World" Icon="icon_world.png" />
+    <pages:TechnologyPage Title="Technology" Icon="icon_technology.png" />
   </TabbedPage.Children>
 </TabbedPage>

@@ -19,6 +19,7 @@ namespace Paperboy.ViewModels
         ProfileImageUrl = "https://wintellectnow.blob.core.windows.net/public/Scott_Peterson.jpg"
       };
     }
+
     private ObservableCollection<News.NewsInformation> _worldNews;
     public ObservableCollection<News.NewsInformation> WorldNews {
       get { return _worldNews; }

@@ -20,15 +20,13 @@ namespace Paperboy {
         App.ViewModel.RefreshNewsAsync();
       }
 
+      App.MainNavigation = Navigation;
+
       base.OnAppearing();
     }
 
     private void Current_ConnectivityChanged(object sender, Plugin.Connectivity.Abstractions.ConnectivityChangedEventArgs e) {
       if (!e.IsConnected) { }
-    }
-
-    private async void OnSettingsClicked(object sender, EventArgs e) {
-      await Navigation.PushAsync(new SettingsPage());
     }
   }
 }

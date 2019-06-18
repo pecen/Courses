@@ -42,7 +42,7 @@
           <x:String>World</x:String>
         </Picker.Items>
       </Picker>
-      <Button Text="Save" Clicked="Button_Clicked" />
+      <Button Clicked="Button_Clicked" Text="Save" />
 
     </StackLayout>
   </ScrollView>

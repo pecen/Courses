@@ -4,10 +4,20 @@
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      Command="{StaticResource RefreshNewsCommand}"
+      CommandParameter="Technology"
+      Icon="icon_refresh.png"
+      Order="Primary"
+      Text="Settings" />
+  </ContentPage.ToolbarItems>
+
   <ListView
     Margin="10"
     HasUnevenRows="True"
     IsRefreshing="{Binding IsBusy}"
+    ItemTapped="OnItemTapped"
     ItemsSource="{Binding TechnologyNews}"
     SeparatorVisibility="None">
     <ListView.ItemTemplate>

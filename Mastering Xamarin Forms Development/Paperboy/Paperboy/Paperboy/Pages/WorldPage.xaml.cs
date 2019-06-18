@@ -24,6 +24,10 @@ namespace Paperboy.Pages
       base.OnAppearing();
     }
 
+    private void OnItemTapped(object sender, ItemTappedEventArgs e) {
+
+    }
+
     //private async void LoadNewsAsync() {
     //  newsListView.IsRefreshing = true;
 

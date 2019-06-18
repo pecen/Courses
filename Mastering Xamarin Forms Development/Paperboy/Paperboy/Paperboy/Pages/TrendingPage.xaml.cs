@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Paperboy.Common.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,10 @@ namespace Paperboy.Pages
       BindingContext = App.ViewModel;
 
       base.OnAppearing();
+    }
+
+    private void OnItemTapped(object sender, ItemTappedEventArgs e) {
+      new NavigateToDetailCommand().Execute(e.Item as News.NewsInformation);
     }
 
     //private async void LoadNewsAsync() {

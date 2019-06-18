@@ -4,6 +4,7 @@
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   xmlns:command="clr-namespace:Paperboy.Common.Commands"
+  xmlns:converters="clr-namespace:Paperboy.Common.Converters"
   xmlns:dark="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Dark"
   xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light">
   <Application.Resources>
@@ -13,6 +14,9 @@
 
       <command:NavigateToSettingsCommand x:Key="NavigateToSettingsCommand" />
       <command:RefreshNewsCommand x:Key="RefreshNewsCommand" />
+
+      <converters:AgoLabelConverter x:Key="AgoLabelConverter" />
+      <converters:LabelFontWeightConverter x:Key="LabelFontWeightConverter" />
 
       <Color x:Key="ListTextColor">#000000</Color>
 

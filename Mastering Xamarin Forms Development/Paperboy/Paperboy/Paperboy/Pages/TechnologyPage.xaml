@@ -57,7 +57,7 @@
               Grid.Column="1"
               Margin="0,5"
               FontSize="Micro"
-              Text="{Binding CreatedDate, StringFormat='UPDATED: {0:dddd h:mm tt} GMT'}"
+              Text="{Binding CreatedDate, Converter={StaticResource AgoLabelConverter}}"
               VerticalOptions="Start" />
 
 

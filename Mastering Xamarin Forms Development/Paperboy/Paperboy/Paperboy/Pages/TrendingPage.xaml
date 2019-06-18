@@ -50,6 +50,7 @@
             <Label
               Grid.Row="0"
               Grid.Column="1"
+              FontAttributes="{Binding Description, Converter={StaticResource LabelFontWeightConverter}}"
               Style="{DynamicResource ListTitleStyle}"
               Text="{Binding Title}" />
             <Label
@@ -74,11 +75,14 @@
               Grid.Row="2"
               Grid.Column="1"
               VerticalOptions="Start">
-              <Label Text="{Binding Description}" VerticalTextAlignment="Start" />
+              <Label
+                FontAttributes="{Binding Description, Converter={StaticResource LabelFontWeightConverter}}"
+                Text="{Binding Description}"
+                VerticalTextAlignment="Start" />
               <Label
                 Margin="0,5"
                 FontSize="Micro"
-                Text="{Binding CreatedDate, StringFormat='UPDATED: {0:dddd h:mm tt} UTC'}"
+                Text="{Binding CreatedDate, Converter={StaticResource AgoLabelConverter}}"
                 VerticalOptions="Start" />
             </StackLayout>
           </Grid>

@@ -21,6 +21,9 @@ namespace Paperboy.News {
 
     // When using NewsApi Search
     public string CreatedDate { get; set; }
+
+    public string Content { get; set; }
+    public string Author { get; set; }
   }
 
   public class NewsResult {

@@ -4,20 +4,30 @@
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-  <StackLayout Margin="40">
+  <ScrollView>
+    <StackLayout Margin="40">
 
-    <Image
-      Aspect="AspectFit"
-      Source="{Binding ImageUrl}"
-      VerticalOptions="Center" />
-    <Label Style="{DynamicResource ListTitleStyle}" Text="{Binding Title}" />
-    <Label Style="{DynamicResource ListDescriptionStyle}" Text="{Binding Description}" />
-    <Label
-      Margin="0,5"
-      FontSize="Micro"
-      Text="{Binding CreatedDate, StringFormat='UPDATED: {0:dddd h:mm tt} GMT'}"
-      VerticalOptions="Start" />
+      <Image
+        Aspect="AspectFit"
+        Source="{Binding ImageUrl}"
+        VerticalOptions="Center" />
+      <Label Style="{DynamicResource ListTitleStyle}" Text="{Binding Title}" />
+      <Label Style="{DynamicResource ListDescriptionStyle}" Text="{Binding Content}" />
+      <Label
+        Margin="0,5"
+        FontSize="Small"
+        Text="{Binding Author}" />
+      <Label
+        Margin="0,5"
+        FontSize="Micro"
+        Text="{Binding CreatedDate, Converter={StaticResource AgoLabelConverter}}"
+        VerticalOptions="Start" />
 
-  </StackLayout>
+      <Button
+        Command="{StaticResource SpeakCommand}"
+        CommandParameter="{Binding Title}"
+        Text="Read Article" />
 
+    </StackLayout>
+  </ScrollView>
 </ContentPage>

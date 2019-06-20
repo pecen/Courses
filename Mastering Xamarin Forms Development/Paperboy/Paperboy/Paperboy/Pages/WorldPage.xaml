@@ -13,10 +13,11 @@
       Text="Settings" />
   </ContentPage.ToolbarItems>
 
-  <ListView ItemTapped="OnItemTapped"
+  <ListView
     Margin="10"
     HasUnevenRows="True"
     IsRefreshing="{Binding IsBusy}"
+    ItemTapped="OnItemTapped"
     ItemsSource="{Binding WorldNews}"
     SeparatorVisibility="None">
     <ListView.ItemTemplate>

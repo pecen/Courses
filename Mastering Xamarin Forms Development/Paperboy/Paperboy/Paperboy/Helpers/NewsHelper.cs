@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Paperboy.Models;
 using Paperboy.News;
 using Paperboy.News.Trending;
@@ -104,8 +105,12 @@ namespace Paperboy.Helpers {
                    Title = item.Title,
                    Description = item.Description,
                    CreatedDate = item.PublishedAt.DateTime.ToString(CultureInfo.InstalledUICulture), //DateTime.Now.ToShortDateString(), // item.PublishedAt.UtcDateTime,
-                   ImageUrl = item.UrlToImage?.AbsoluteUri,
+                   ImageUrl = item.UrlToImage?.AbsoluteUri, 
+                   Content = item.Content,
+                   Author = item.Author
                  }).ToList();
+
+      //var s = JObject.Parse(result).ToString();
 
       return results.Where(w => !string.IsNullOrEmpty(w.ImageUrl)).Take(30).ToList();
 

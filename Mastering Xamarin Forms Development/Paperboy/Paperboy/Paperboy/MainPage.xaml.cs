@@ -22,6 +22,8 @@ namespace Paperboy {
 
       App.MainNavigation = Navigation;
 
+      //var label = Helpers.GeneralHelper.GetLabel();
+
       base.OnAppearing();
     }
 

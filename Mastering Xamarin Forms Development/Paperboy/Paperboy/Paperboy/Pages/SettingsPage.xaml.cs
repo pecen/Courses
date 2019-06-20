@@ -1,4 +1,5 @@
-﻿using Paperboy.Models;
+﻿using Paperboy.Helpers;
+using Paperboy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,19 +25,18 @@ namespace Paperboy.Pages {
     }
 
     private void InitializeSettings() {
-      //CurrentUser = new UserInformation {
-      //  DisplayName = "Scott",
-      //  BioContent = "Scott has been developing Microsoft Enterprise solutions for organizations around the world for the last 28 years, and is the Senior Architect & Developer behind Liquid Daffodil.",
-      //  ProfileImageUrl = "https://wintellectnow.blob.core.windows.net/public/Scott_Peterson.jpg"
-      //};
-
-      BindingContext = App.ViewModel.CurrentUser;
-
-      //displayNameEntry.Text = "Scott";
-      //bioEditor.Text = "Scott has been developing Microsoft Enterprise solutions for organizations around the world for the last 28 years, and is the Senior Architect & Developer behind Liquid Daffodil.";
+      BindingContext = App.ViewModel;
 
       articleCountSlider.Value = 10;
       categoryPicker.SelectedIndex = 1;
+
+      var label = GeneralHelper.GetLabel();
+      var extendedLabel = GeneralHelper.GetLabel("Running Paperboy on", true);
+      var orientation = GeneralHelper.GetOrientation();
+
+      App.ViewModel.PlatformLabel = label;
+      App.ViewModel.ExtendedPlatformLabel = extendedLabel;
+      App.ViewModel.CurrentOrientation = orientation;
     }
 
     private void Button_Clicked(object sender, EventArgs e) {

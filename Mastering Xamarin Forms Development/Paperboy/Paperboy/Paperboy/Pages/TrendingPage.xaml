@@ -45,6 +45,7 @@
               Aspect="AspectFit"
               HeightRequest="80"
               Source="{Binding ImageUrl}"
+              VerticalOptions="Start"
               WidthRequest="80" />
 
             <Label

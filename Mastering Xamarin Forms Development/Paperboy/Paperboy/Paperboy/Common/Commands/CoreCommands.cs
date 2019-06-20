@@ -1,4 +1,5 @@
-﻿using Paperboy.Pages;
+﻿using Paperboy.Helpers;
+using Paperboy.Pages;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -101,6 +102,28 @@ namespace Paperboy.Common.Commands
 
     private async void NavigateToDetailAsync(News.NewsInformation article) {
       await App.MainNavigation.PushAsync(new Pages.ItemDetailPage(article), true);
+    }
+  }
+
+  public class SpeakCommand : ICommand {
+    public event EventHandler CanExecuteChanged;
+
+    public bool CanExecute(object parameter) {
+      return true;
+    }
+
+    public void RaiseCanExecuteChanged() {
+      CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+
+      // The old way of doing the above
+      //var handler = CanExecuteChanged;
+      //if (handler != null) {
+      //  handler(this, EventArgs.Empty);
+      //}
+    }
+
+    public void Execute(object parameter) {
+      GeneralHelper.Speak((string)parameter);
     }
   }
 }

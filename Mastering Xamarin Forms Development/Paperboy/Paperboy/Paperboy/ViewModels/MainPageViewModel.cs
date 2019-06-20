@@ -1,4 +1,5 @@
-﻿using Paperboy.Models;
+﻿using Paperboy.Interfaces;
+using Paperboy.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -42,6 +43,24 @@ namespace Paperboy.ViewModels
     public UserInformation CurrentUser {
       get { return _currentUser; }
       set { SetProperty(ref _currentUser, value); }
+    }
+
+    private string _platformLabel;
+    public string PlatformLabel {
+      get { return _platformLabel; }
+      set { SetProperty(ref _platformLabel, value); }
+    }
+
+    private string _extendedPlatformLabel;
+    public string ExtendedPlatformLabel {
+      get { return _extendedPlatformLabel; }
+      set { SetProperty(ref _extendedPlatformLabel, value); }
+    }
+
+    private DeviceOrientations _currentOrientation;
+    public DeviceOrientations CurrentOrientation {
+      get { return this._currentOrientation; }
+      set { this.SetProperty(ref this._currentOrientation, value); }
     }
 
     private bool _isBusy;

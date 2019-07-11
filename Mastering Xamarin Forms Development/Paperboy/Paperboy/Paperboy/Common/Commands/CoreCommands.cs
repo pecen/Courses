@@ -1,4 +1,5 @@
-﻿using Paperboy.Helpers;
+﻿using Paperboy.Extensions;
+using Paperboy.Helpers;
 using Paperboy.Pages;
 using System;
 using System.Collections.Generic;
@@ -124,6 +125,43 @@ namespace Paperboy.Common.Commands
 
     public void Execute(object parameter) {
       GeneralHelper.Speak((string)parameter);
+    }
+  }
+
+  public class ToggleFavoriteCommand : ICommand {
+    private bool _isBusy = false;
+
+    public event EventHandler CanExecuteChanged;
+
+    public bool CanExecute(object parameter) {
+      return !_isBusy;
+    }
+
+    public void RaiseCanExecuteChanged() {
+      CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+
+      // The old way of doing the above
+      //var handler = CanExecuteChanged;
+      //if (handler != null) {
+      //  handler(this, EventArgs.Empty);
+      //}
+    }
+
+    public void Execute(object parameter) {
+      ToggleFavoriteAsync(parameter as News.NewsInformation);
+    }
+
+    private async void ToggleFavoriteAsync(News.NewsInformation article) {
+      _isBusy = true;
+      RaiseCanExecuteChanged();
+      App.ViewModel.IsBusy = true;
+
+      await App.ViewModel.Favorites.AddAsync(await article.AsFavorite("Technology"));
+
+      _isBusy = false;
+      RaiseCanExecuteChanged();
+      App.ViewModel.IsBusy = false;
+
     }
   }
 }

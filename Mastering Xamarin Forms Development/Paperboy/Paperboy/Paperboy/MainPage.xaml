@@ -18,5 +18,6 @@
     <pages:TrendingPage Title="Trending" Icon="icon_trending.png" />
     <pages:WorldPage Title="World" Icon="icon_world.png" />
     <pages:TechnologyPage Title="Technology" Icon="icon_technology.png" />
+    <pages:FavoritesPage Title="Favs" Icon="icon_favorites.png" />
   </TabbedPage.Children>
 </TabbedPage>

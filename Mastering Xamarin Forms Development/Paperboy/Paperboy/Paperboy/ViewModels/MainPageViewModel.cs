@@ -1,4 +1,5 @@
-﻿using Paperboy.Interfaces;
+﻿using Paperboy.Extensions;
+using Paperboy.Interfaces;
 using Paperboy.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Paperboy.ViewModels
       WorldNews = new ObservableCollection<News.NewsInformation>();
       TechnologyNews = new ObservableCollection<News.NewsInformation>();
       TrendingNews = new ObservableCollection<News.NewsInformation>();
+      Favorites = new FavoritesCollection();
 
       CurrentUser = new UserInformation {
         DisplayName = "Scott",
@@ -59,8 +61,14 @@ namespace Paperboy.ViewModels
 
     private DeviceOrientations _currentOrientation;
     public DeviceOrientations CurrentOrientation {
-      get { return this._currentOrientation; }
-      set { this.SetProperty(ref this._currentOrientation, value); }
+      get { return _currentOrientation; }
+      set { SetProperty(ref _currentOrientation, value); }
+    }
+
+    private FavoritesCollection _favorites;
+    public FavoritesCollection Favorites {
+      get { return _favorites; }
+      set { SetProperty(ref _favorites, value); }
     }
 
     private bool _isBusy;
@@ -79,33 +87,47 @@ namespace Paperboy.ViewModels
       IsBusy = false;
     }
 
-    public async Task RefreshWorldNewsAsync() {
-      this.WorldNews.Clear();
+    public async Task RefreshFavoritesAsync() {
+      IsBusy = true;
+
+      Favorites.Clear();
+
+      var favorites = await App.Database.GetItemsAsync();
+
+      foreach (var favorite in favorites) {
+        Favorites.Add(favorite.AsFavorite("Technology"));
+      }
+
+      IsBusy = false;
+    }
+
+  public async Task RefreshWorldNewsAsync() {
+      WorldNews.Clear();
 
       var news = await Helpers.NewsHelper.GetByCategoryAsync(News.NewsCategoryType.World);
 
       foreach (var item in news) {
-        this.WorldNews.Add(item);
+        WorldNews.Add(item);
       }
     }
 
     public async Task RefreshTechnologyNewsAsync() {
-      this.TechnologyNews.Clear();
+      TechnologyNews.Clear();
 
       var news = await Helpers.NewsHelper.GetByCategoryAsync(News.NewsCategoryType.ScienceAndTechnology);
 
       foreach (var item in news) {
-        this.TechnologyNews.Add(item);
+        TechnologyNews.Add(item);
       }
     }
 
     public async Task RefreshTrendingNewsAsync() {
-      this.TrendingNews.Clear();
+      TrendingNews.Clear();
 
       var news = await Helpers.NewsHelper.GetTrendingAsync();
 
       foreach (var item in news) {
-        this.TrendingNews.Add(item);
+        TrendingNews.Add(item);
       }
     }
   }

@@ -22,7 +22,10 @@ namespace Paperboy {
 
       App.MainNavigation = Navigation;
 
+      // The following just for testing purposes
       //var label = Helpers.GeneralHelper.GetLabel();
+      //var folders = Helpers.StorageHelper.GetSpecialFolders();
+      //var dbPath = Helpers.StorageHelper.GetLocalFilePath();
 
       base.OnAppearing();
     }

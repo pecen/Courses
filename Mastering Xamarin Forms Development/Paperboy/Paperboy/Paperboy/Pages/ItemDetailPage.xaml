@@ -4,6 +4,15 @@
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      Command="{StaticResource ToggleFavoriteCommand}"
+      CommandParameter="{Binding}"
+      Icon="icon_favorites.png"
+      Order="Secondary"
+      Text="Add to Favorites" />
+  </ContentPage.ToolbarItems>
+
   <ScrollView>
     <StackLayout Margin="40">
 
@@ -16,7 +25,7 @@
       <Label
         Margin="0,5"
         FontSize="Small"
-        Text="{Binding Author}" />
+        Text="{Binding Author, StringFormat='Author: {0}'}" />
       <Label
         Margin="0,5"
         FontSize="Micro"

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  x:Class="Paperboy.Pages.FavoritesPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+  <ContentPage.ToolbarItems>
+    <ToolbarItem
+      Command="{StaticResource RefreshNewsCommand}"
+      CommandParameter="Favorites"
+      Icon="icon_refresh.png"
+      Order="Primary"
+      Priority="0"
+      Text="Refresh" />
+  </ContentPage.ToolbarItems>
+
+  <ListView
+    x:Name="favoritesListView"
+    Margin="10"
+    HasUnevenRows="True"
+    IsRefreshing="{Binding IsBusy}"
+    ItemTapped="OnItemTapped"
+    ItemsSource="{Binding Favorites}"
+    SeparatorVisibility="None">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto" />
+              <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition />
+              <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+            <Image
+              Grid.RowSpan="3"
+              Aspect="Fill"
+              HeightRequest="80"
+              Source="{Binding ImageUrl}"
+              VerticalOptions="Start"
+              WidthRequest="80" />
+
+            <Label
+              Grid.Row="0"
+              Grid.Column="1"
+              FontAttributes="{Binding Description, Converter={StaticResource LabelFontWeightConverter}}"
+              Style="{DynamicResource ListTitleStyle}"
+              Text="{Binding Title}" />
+            <Label
+              Grid.Row="1"
+              Grid.Column="1"
+              FontAttributes="{Binding Description, Converter={StaticResource LabelFontWeightConverter}}"
+              Style="{DynamicResource ListDescriptionStyle}"
+              Text="{Binding Description}" />
+
+            <Label
+              Grid.Row="2"
+              Grid.Column="1"
+              Margin="0,5"
+              FontSize="Micro"
+              Text="{Binding ArticleDate, Converter={StaticResource AgoLabelConverter}}"
+              VerticalOptions="Start" />
+
+
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+</ContentPage>

@@ -1,4 +1,6 @@
-﻿using Paperboy.ViewModels;
+﻿using Paperboy.Data;
+using Paperboy.Interfaces;
+using Paperboy.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -38,6 +40,16 @@ namespace Paperboy {
     //protected override void RegisterTypes(IContainerRegistry containerRegistry) {
 
     //}
+
+    static FavoritesDatabase database;
+    public static FavoritesDatabase Database {
+      get {
+        if (database == null) {
+          database = new FavoritesDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("Favorites.db3"));
+        }
+        return database;
+      }
+    }
 
     protected override void OnStart() {
       // Handle when your app starts

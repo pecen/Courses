@@ -9,46 +9,46 @@ using System.Threading.Tasks;
 namespace Paperboy.Models
 {
   public class FavoritesCollection : ObservableCollection<FavoriteInformation> {
-    public async Task<int> AddAsync(FavoriteInformation article) {
+    //public async Task<int> AddAsync(FavoriteInformation article) {
+    public async Task AddAsync(FavoriteInformation article) { 
+      var favorite = new Favorite() {
+        ArticleDate =DateTime.Parse(article.ArticleDate),
+        Description = article.Description,
+        ImageUrl = article.ImageUrl,
+        Title = article.Title,
+      };
 
-      //var favorite = new Favorite() {
-      //  ArticleDate = article.ArticleDate,
-      //  Description = article.Description,
-      //  ImageUrl = article.ImageUrl,
-      //  Title = article.Title,
-      //};
+      await FavoritesManager.DefaultManager.SaveFavoriteAsync(favorite);
 
-      //await FavoritesManager.DefaultManager.SaveFavoriteAsync(favorite);
+      Add(article);
 
-      //Add(article);
+      //int id = -1;
 
-      int id = -1;
+      //await FavoritesHelper.EnsureCategoriesAsync();
 
-      await FavoritesHelper.EnsureCategoriesAsync();
+      //var category = await App.Database.GetCategoryAsync(article.CategoryTitle);
 
-      var category = await App.Database.GetCategoryAsync(article.CategoryTitle);
-
-      if(category != null) {
-        id = await App.Database.SaveItemAsync(new Favorite {
-          ArticleDate = DateTime.Parse(article.ArticleDate),
-          Category = category,
-          CategoryId = category.Id,
-          Description = article.Description,
-          ImageUrl = article.ImageUrl,
-          Title = article.Title
-        });
-        article.Id = id;
-        Add(article);
-      }
-      return id;
+      //if(category != null) {
+      //  id = await App.Database.SaveItemAsync(new Favorite {
+      //    ArticleDate = DateTime.Parse(article.ArticleDate),
+      //    Category = category,
+      //    CategoryId = category.Id,
+      //    Description = article.Description,
+      //    ImageUrl = article.ImageUrl,
+      //    Title = article.Title
+      //  });
+      //  article.Id = id;
+      //  Add(article);
+      //}
+      //return id;
     }
 
-    public async Task<int> RemoveAsync(int id) {
-      var favorite = await App.Database.GetItemAsync(id);
+    //public async Task<int> RemoveAsync(int id) {
+    //  var favorite = await App.Database.GetItemAsync(id);
 
-      id = await App.Database.DeleteItemAsync(favorite);
+    //  id = await App.Database.DeleteItemAsync(favorite);
 
-      return id;
-    }
+    //  return id;
+    //}
   }
 }

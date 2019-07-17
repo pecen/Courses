@@ -40,16 +40,17 @@ namespace Paperboy {
     //protected override void RegisterTypes(IContainerRegistry containerRegistry) {
 
     //}
+    // End of Prism commented out code
 
-    static FavoritesDatabase database;
-    public static FavoritesDatabase Database {
-      get {
-        if (database == null) {
-          database = new FavoritesDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("Favorites.db3"));
-        }
-        return database;
-      }
-    }
+    //static FavoritesDatabase database;
+    //public static FavoritesDatabase Database {
+    //  get {
+    //    if (database == null) {
+    //      database = new FavoritesDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("Favorites.db3"));
+    //    }
+    //    return database;
+    //  }
+    //}
 
     protected override void OnStart() {
       // Handle when your app starts

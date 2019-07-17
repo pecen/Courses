@@ -1,4 +1,5 @@
-﻿using Paperboy.Extensions;
+﻿using Paperboy.Data;
+using Paperboy.Extensions;
 using Paperboy.Interfaces;
 using Paperboy.Models;
 using System;
@@ -92,7 +93,8 @@ namespace Paperboy.ViewModels
 
       Favorites.Clear();
 
-      var favorites = await App.Database.GetItemsAsync();
+      //var favorites = await App.Database.GetItemsAsync();
+      var favorites = await FavoritesManager.DefaultManager.GetFavoritesAsync();
 
       foreach (var favorite in favorites) {
         Favorites.Add(favorite.AsFavorite("Technology"));

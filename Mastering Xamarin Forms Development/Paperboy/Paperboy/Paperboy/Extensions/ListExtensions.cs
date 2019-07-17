@@ -18,7 +18,7 @@ namespace Paperboy.Extensions
     }
 
     public async static Task<FavoriteInformation> AsFavorite(this News.NewsInformation article, string categoryTitle) {
-      var category = await App.Database.GetCategoryAsync(categoryTitle);
+      //var category = await App.Database.GetCategoryAsync(categoryTitle);
 
       return new FavoriteInformation() {
         ArticleDate = article.CreatedDate, // DateTime.Parse(article.CreatedDate),

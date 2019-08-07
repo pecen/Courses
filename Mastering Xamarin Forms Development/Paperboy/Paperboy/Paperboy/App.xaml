@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application
+<prism:PrismApplication
   x:Class="Paperboy.App"
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   xmlns:command="clr-namespace:Paperboy.Common.Commands"
   xmlns:converters="clr-namespace:Paperboy.Common.Converters"
   xmlns:dark="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Dark"
-  xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light">
+  xmlns:light="clr-namespace:Xamarin.Forms.Themes;assembly=Xamarin.Forms.Theme.Light"
+  xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms">
   <Application.Resources>
 
     <!--<ResourceDictionary MergedWith="dark:DarkThemeResources">-->
@@ -15,7 +16,7 @@
       <command:NavigateToSettingsCommand x:Key="NavigateToSettingsCommand" />
       <command:RefreshNewsCommand x:Key="RefreshNewsCommand" />
       <command:SpeakCommand x:Key="SpeakCommand" />
-      <command:ToggleFavoriteCommand x:Key="ToggleFavoriteCommand"/>
+      <command:ToggleFavoriteCommand x:Key="ToggleFavoriteCommand" />
 
       <converters:AgoLabelConverter x:Key="AgoLabelConverter" />
       <converters:LabelFontWeightConverter x:Key="LabelFontWeightConverter" />
@@ -39,4 +40,4 @@
     </ResourceDictionary>
 
   </Application.Resources>
-</Application>
+</prism:PrismApplication>

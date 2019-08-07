@@ -30,7 +30,7 @@ namespace Paperboy.Common.Commands
     }
 
     private async void NavigateAsync() {
-      await App.MainNavigation.PushAsync(new SettingsPage(), true);
+      //await App.MainNavigation.PushAsync(new SettingsPage(), true);
     }
   }
 
@@ -102,7 +102,7 @@ namespace Paperboy.Common.Commands
     }
 
     private async void NavigateToDetailAsync(News.NewsInformation article) {
-      await App.MainNavigation.PushAsync(new Pages.ItemDetailPage(article), true);
+      //await App.MainNavigation.PushAsync(new Pages.ItemDetailPage(article), true);
     }
   }
 

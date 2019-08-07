@@ -25,9 +25,9 @@ namespace Paperboy.Pages
       base.OnAppearing();
     }
 
-    private void OnItemTapped(object sender, ItemTappedEventArgs e) {
-      new NavigateToDetailCommand().Execute(e.Item as News.NewsInformation);
-    }
+    //private void OnItemTapped(object sender, ItemTappedEventArgs e) {
+    //  new NavigateToDetailCommand().Execute(e.Item as News.NewsInformation);
+    //}
 
     //private async void LoadNewsAsync() {
     //  newsListView.IsRefreshing = true;

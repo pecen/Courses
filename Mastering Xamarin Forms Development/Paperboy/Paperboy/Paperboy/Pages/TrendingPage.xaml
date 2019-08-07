@@ -3,7 +3,10 @@
   x:Class="Paperboy.Pages.TrendingPage"
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin">
+  xmlns:behaviors="clr-namespace:Paperboy.Behaviors"
+  xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+  prism:ViewModelLocator.AutowireViewModel="True">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem
@@ -14,11 +17,18 @@
       Text="Settings" />
   </ContentPage.ToolbarItems>
 
+  <!--
+    The following commented out code should be used in the
+    ListView if code-behind is used for navigating to the details page,
+    and the row that uses ItemTappedAttached should then be removed
+    since this is the MVVM with Prism way of doing the thing
+  -->
+  <!--  ItemTapped="OnItemTapped"  -->
   <ListView
     Margin="20"
+    behaviors:ItemTappedAttached.Command="{Binding NavigateToDetailCommand}"
     HasUnevenRows="True"
     IsRefreshing="{Binding IsBusy}"
-    ItemTapped="OnItemTapped"
     ItemsSource="{Binding TrendingNews}">
     <ListView.ItemTemplate>
       <DataTemplate>
